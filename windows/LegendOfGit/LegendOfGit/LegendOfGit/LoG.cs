@@ -14,12 +14,12 @@ namespace LegendOfGit
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class LoG : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public Game1()
+        public LoG()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -63,29 +63,32 @@ namespace LegendOfGit
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
+        /// <param name="aGameTime">Provides a snapshot of timing values.</param>
+        protected override void Update(GameTime aGameTime)
         {
+            InputManager im = InputManager.Instance();
+            im.Update(aGameTime);
+
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (im.IsPausePressed())
                 this.Exit();
 
             // TODO: Add your update logic here
 
-            base.Update(gameTime);
+            base.Update(aGameTime);
         }
 
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
+        /// <param name="aGameTime">Provides a snapshot of timing values.</param>
+        protected override void Draw(GameTime aGameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
 
-            base.Draw(gameTime);
+            base.Draw(aGameTime);
         }
     }
 }

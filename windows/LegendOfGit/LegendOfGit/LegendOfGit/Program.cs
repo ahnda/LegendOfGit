@@ -10,7 +10,7 @@ namespace LegendOfGit
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            using (LoG game = new LoG())
             {
                 game.Run();
             }
